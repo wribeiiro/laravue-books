@@ -1,4 +1,4 @@
 ## Laravue Books
 
 ## Screenshot
-![laravue]()
+![laravue](https://raw.githubusercontent.com/wribeiiro/laravue-books/master/screenshot.png)
