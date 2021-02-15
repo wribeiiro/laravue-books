@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+@import 'variables';
+@import '~bootstrap/scss/bootstrap';
+
+body {
+    background-color: $dark;
+}
+
+table {
+    border-top: solid 2px $purple;
+}
+
+input[type=text] {
+    background-color: $dark_grey;
+    color: $default;
+    border: solid 2px $purple;
+}
+
+.navbar-purple {
+    background-color: $purple;
+    border-radius: 5px;
+}
+
+.form-control:focus {
+    box-shadow: none;
+}
+
+.btn-purple {
+    background-color: $purple;
+    border: solid $purple;
+    color: $white;
+}
