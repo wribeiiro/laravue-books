@@ -1,4 +1,4 @@
-## Laravel & Vue CRUD Single Page Application (SPA) Tutorial
+## Laravue Books
 
 ## Screenshot
 ![laravue]()
