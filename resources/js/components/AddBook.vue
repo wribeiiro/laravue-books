@@ -7,7 +7,7 @@
                 <router-link to="/" class="btn btn-purple btn-sm" title="Home"><i class="fa fa-home"></i> Back to Home</router-link>
             </div>
         </div>
-        
+
         <div class="row">
             <div class="col-md-12">
                 <form @submit.prevent="addBook">
@@ -60,7 +60,7 @@
             },
             validateFields() {
                 var vm = this;
-                
+
                 if (this.book.name === "" || this.book.name == "undefined") {
                     alert("Name is empty")
                     return
@@ -68,7 +68,7 @@
 
                 if (this.book.author === "" || this.book.author == "undefined") {
                     alert("Author is empty")
-                    return 
+                    return
                 }
             }
         }

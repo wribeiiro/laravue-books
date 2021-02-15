@@ -19,7 +19,7 @@ class BookController extends Controller
             'name'   => $request->input('name'),
             'author' => $request->input('author')
         ]);
-        
+
         $book->save();
 
         return response()->json('The book successfully added');
