@@ -15,13 +15,21 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label class="text-white" for="">Name</label>
-                                <input type="text" class="form-control" v-model="book.name">
+                                <input 
+                                    type="text" 
+                                    class="form-control" 
+                                    v-model.trim="book.name"
+                                >
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label class="text-white" for="">Author</label>
-                                <input type="text" class="form-control" v-model="book.author">
+                                <input 
+                                    type="text" 
+                                    class="form-control" 
+                                    v-model.trim="book.author"
+                                >
                             </div>
                         </div>
                         <div class="col-md-12">
@@ -35,6 +43,8 @@
 </template>
 
 <script>
+    import { required, minLength } from 'vuelidate/lib/validators'
+
     export default {
         data() {
             return {
@@ -46,29 +56,29 @@
             }
         },
         methods: {
-            addBook() {
-
-                this.validateFields()
-
-                this.axios
-                    .post('http://localhost:8000/api/book/add', this.book)
-                    .then(response => (
-                        this.$router.push({name: 'home'})
-                    ))
-                    .catch(error => console.log(error))
-                    .finally(() => this.loading = false)
-            },
-            validateFields() {
-                var vm = this;
-
-                if (this.book.name === "" || this.book.name == "undefined") {
-                    alert("Name is empty")
-                    return
+            validateForm() {
+                if (this.book.name === "") {
+                    alert("The name field is required")
+                    return false
                 }
 
-                if (this.book.author === "" || this.book.author == "undefined") {
-                    alert("Author is empty")
-                    return
+                if (this.book.author === "") {
+                    alert("The author field is required")
+                    return false
+                }
+
+                return true
+            },
+            addBook() {
+                
+                if (this.validateForm()) {
+                    this.axios
+                        .post('http://localhost:8000/api/book/add', this.book)
+                        .then(response => (
+                            this.$router.push({name: 'home'})
+                        ))
+                        .catch(error => console.log(error))
+                        .finally(() => this.loading = false)
                 }
             }
         }

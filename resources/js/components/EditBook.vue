@@ -52,7 +52,7 @@
         methods: {
             updateBook() {
                 this.axios
-                    .post(`http://localhost:8000/api/book/update/${this.$route.params.id}`, this.book)
+                    .put(`http://localhost:8000/api/book/update/${this.$route.params.id}`, this.book)
                     .then((response) => {
                         this.$router.push({name: 'home'});
                     });

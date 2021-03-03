@@ -13,7 +13,13 @@ class BookController extends Controller
         return array_reverse($books);
     }
 
-    public function add(Request $request)
+    /**
+     * add
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function add(Request $request): \Illuminate\Http\JsonResponse
     {
         $book = new Book([
             'name'   => $request->input('name'),
@@ -22,28 +28,47 @@ class BookController extends Controller
 
         $book->save();
 
-        return response()->json('The book successfully added');
+        return response()->json('The book successfully added', 201);
     }
 
-    public function edit($id)
+    /**
+     * edit
+     *
+     * @param int $id
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function edit($id): \Illuminate\Http\JsonResponse
     {
         $book = Book::find($id);
-        return response()->json($book);
+        return response()->json($book, 200);
     }
 
-    public function update($id, Request $request)
+    /**
+     * update
+     *
+     * @param int $id
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function update($id, Request $request): \Illuminate\Http\JsonResponse
     {
         $book = Book::find($id);
         $book->update($request->all());
 
-        return response()->json('The book successfully updated');
+        return response()->json('The book successfully updated', 200);
     }
 
-    public function delete($id)
+    /**
+     * delete
+     *
+     * @param int $id
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function delete($id): \Illuminate\Http\JsonResponse
     {
         $book = Book::find($id);
         $book->delete();
 
-        return response()->json('The book successfully deleted');
+        return response()->json('The book successfully deleted', 204);
     }
 }
